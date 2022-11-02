@@ -9,7 +9,7 @@ CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
 @app.route('/')
-@cross_origin()
+# @cross_origin()
 def home():
     return "home"
 
