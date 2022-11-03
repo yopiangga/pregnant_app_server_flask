@@ -1,7 +1,6 @@
 from flask import Flask, jsonify, request
 import numpy as np
 import pandas as pd
-from matplotlib import pyplot as plt
 from sklearn.cluster import KMeans
 from flask_cors import CORS, cross_origin
 
