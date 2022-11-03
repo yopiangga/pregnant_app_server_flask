@@ -1,6 +1,6 @@
 from flask import Flask, jsonify, request
-import numpy as np
-import pandas as pd
+import numpy
+import pandas
 from sklearn.cluster import KMeans
 from flask_cors import CORS, cross_origin
 
@@ -23,13 +23,13 @@ def check_cluster():
     tb = data['tb']
     lk = data['lk']
 
-    dataset = pd.read_csv("Dataset Balita.csv")
+    dataset = pandas.read_csv("Dataset Balita.csv")
     X = dataset.loc[:, ["NBB", "NTB", "NLK"]]
 
     kmeans = KMeans(n_clusters=5)
     kmeans.fit(X)
-    my_array = np.array([[bb, tb, lk]])
-    test = pd.DataFrame(my_array, columns=['NBB', 'NTB', 'NLK'])
+    my_array = numpy.array([[bb, tb, lk]])
+    test = pandas.DataFrame(my_array, columns=['NBB', 'NTB', 'NLK'])
     predict = kmeans.predict(test)[0]
     return jsonify({'cluster': int(predict)})
 
