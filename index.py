@@ -3,16 +3,21 @@ import numpy as np
 import pandas as pd
 from matplotlib import pyplot as plt
 from sklearn.cluster import KMeans
+from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
+CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 
 @app.route('/')
+@cross_origin()
 def home():
     return "Selamat Datang di server Python Flask"
 
 
 @app.route('/check-cluster', methods=['POST'])
+@cross_origin()
 def check_cluster():
     data = request.json
     bb = data['bb']
